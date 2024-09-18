@@ -6,7 +6,7 @@
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:57:01 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/09/17 16:12:50 by nsouchal         ###   ########.fr       */
+/*   Updated: 2024/09/18 13:21:14 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,36 @@ void	identify(Base *p)
 		std::cout << "B" << std::endl;
 	if (C_ptr)
 		std::cout << "C" << std::endl;
+}
+
+void	identify(Base &p)
+{
+	try
+	{
+		A &A_ref = dynamic_cast<A&>(p);
+		(void)A_ref;
+		std::cout << "A" << std::endl;
+	}
+	catch(const std::exception)
+	{
+		try
+		{
+			B &B_ref = dynamic_cast<B&>(p);
+			(void)B_ref;
+			std::cout << "B" << std::endl;
+		}
+		catch(const std::exception)
+		{
+			try
+			{
+				C &C_ref = dynamic_cast<C&>(p);
+				(void)C_ref;
+				std::cout << "C" << std::endl;
+			}
+			catch(const std::exception)
+			{
+				std::cout << "neither A B or C" << std::endl;
+			}
+		}
+	}
 }
