@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Serializer.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/18 10:06:41 by nsouchal          #+#    #+#             */
-/*   Updated: 2024/09/18 12:19:35 by nsouchal         ###   ########.fr       */
+/*   Created: 2024/09/18 12:05:42 by nsouchal          #+#    #+#             */
+/*   Updated: 2024/09/18 12:10:00 by nsouchal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
-#include <iostream>
 
-int main()
+uintptr_t   Serializer::serialize(Data *ptr)
 {
-    Data    data;
-    Data    *data_ptr;
-    Data    *ptr_to_test;
+    return (reinterpret_cast<uintptr_t>(ptr));
+}
 
-    data_ptr = &data;
-    ptr_to_test = Serializer::deserialize(Serializer::serialize(&data));
-    std::cout << "data ptr: " << data_ptr << std::endl;
-    std::cout << "ptr to test: " << ptr_to_test << std::endl;
-    return (0);
+Data    *Serializer::deserialize(uintptr_t raw)
+{
+    return (reinterpret_cast<Data*>(raw));
 }

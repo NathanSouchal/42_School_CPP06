@@ -6,20 +6,21 @@
 #    By: nsouchal <nsouchal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/16 13:00:13 by nsouchal          #+#    #+#              #
-#    Updated: 2024/09/18 10:06:59 by nsouchal         ###   ########.fr        #
+#    Updated: 2024/09/18 12:17:07 by nsouchal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = serializer
 
 SRC_FILE =	main.cpp \
-			ScalarConverter.cpp \
+			Serializer.cpp \
 
 DIR_BUILD		=	.build/
 DIR_SRCS 		= 	srcs/
 DIR_HEADERS		=	includes/
 
-HEADERFILES =	$(DIR_HEADERS)ScalarConverter.hpp
+HEADERFILES =	$(DIR_HEADERS)Serializer.hpp \
+				$(DIR_HEADERS)Data.hpp
 
 OBJS			=	$(patsubst %.cpp, $(DIR_BUILD)%.o, $(SRCS))
 SRCS			=	$(addprefix $(DIR_SRCS),$(SRC_FILE))
